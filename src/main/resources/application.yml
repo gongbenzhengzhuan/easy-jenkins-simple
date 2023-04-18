@@ -1,0 +1,19 @@
+server:
+  port: 8329
+
+
+spring:
+  task:
+    execution:
+      pool:
+        max-pool-size: 10
+        queue-capacity: 1000
+  thymeleaf:
+    cache: false
+    check-template: true
+    suffix: .html
+    encoding: utf-8
+    servlet:
+      content-type: text/html
+    mode: HTML5
+    prefix: classpath:templates/

@@ -1,0 +1,90 @@
+.winbox.my-theme {
+    background: #fff;
+}
+
+.winbox.my-theme .wb-body {
+    color: #fff;
+    background: #131820;
+}
+
+.winbox.my-theme .wb-title {
+    color: #000;
+}
+
+.winbox.my-theme .wb-icon {
+    filter: invert(1);
+}
+
+.win-deploy {
+    width: 100%;
+    height: auto;
+}
+
+.nav_wrap {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.nav_ul {
+    width: 100%;
+    height: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    list-style: none;
+}
+
+.nav_li {
+    margin-left: -35px;
+}
+
+.keep_td {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.table-body-easy {
+    width: 100%;
+    height: auto;
+    overflow-x: scroll;
+}
+
+.table-body-easy::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    cursor: pointer;
+}
+
+.table-body-easy::-webkit-scrollbar-thumb {
+    background-color: #8014f1;
+    background-image: -webkit-linear-gradient(45deg,
+    rgba(255, 255, 255, 0.4) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.4) 75%,
+    transparent 75%,
+    transparent);
+    border-radius: 32px;
+}
+
+.table-body-easy::-webkit-scrollbar-track {
+    background-color: rgba(106, 28, 252, 0.1);
+    border-radius: 32px;
+}
+
+.table-bot {
+    width: 100%;
+    height: 35px;
+    margin-bottom: 5px;
+    color: #8014f1;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.table-bot svg {
+    width: 26px;
+    height: 26px;
+}

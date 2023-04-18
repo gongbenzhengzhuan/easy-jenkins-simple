@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive Admin Dashboard Template">
+    <meta name="keywords" content="admin,dashboard">
+    <meta name="author" content="stacks">
+    <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>easy-jenkins</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link href="https://cdn.bootcss.com/font-awesome/5.5.0-2/css/all.min.css" rel="stylesheet">
+    <link th:href="@{/plugins/icomoon/style.css}" rel="stylesheet">
+    <link th:href="@{/plugins/switchery/switchery.min.css}" rel="stylesheet">
+
+    <!-- Theme Styles -->
+    <link th:href="@{/css/concept.min.css}" rel="stylesheet">
+    <link th:href="@{/css/custom.css}" rel="stylesheet">
+
+    <link rel="icon" th:href="@{/images/logo/favicon.ico}" type="image/x-icon"/>
+    <link rel="shortcut icon" th:href="@{/images/logo/favicon.ico}" type="image/x-icon"/>
+
+</head>
+<body>
+
+<!-- Page Container -->
+<div class="page-container">
+    <!-- Page Sidebar -->
+    <div class="page-sidebar">
+        <div class="profile-menu">
+            <a href="#">
+                <img th:src="@{/images/avatars/avatar1.png}" alt="">
+            </a>
+        </div>
+        <div class="page-sidebar-inner">
+            <div class="page-sidebar-menu">
+                <ul>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Dashboard"><i
+                                class="fas fa-rocket"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="News"><i
+                                class="fas fa-globe-africa"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Inbox"><i
+                                class="fas fa-inbox"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Chat"><i
+                                class="far fa-comments"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div><!-- /Page Sidebar -->
+    <div class="settings-overlay"></div>
+    <!-- Page Content -->
+    <div class="page-content">
+        <div class="secondary-sidebar">
+            <div class="secondary-sidebar-bar">
+                <a href="#" class="logo-box">easy-jenkins</a>
+            </div>
+            <div class="secondary-sidebar-menu">
+                <ul class="accordion-menu">
+
+
+                    <li class="active-page">
+                        <a href="javascript:void(0)">
+                            <i class="menu-icon icon-apps"></i><span>项目部署</span><i
+                                class="accordion-icon fas fa-angle-left"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="/">部署列表</a></li>
+                            <li><a href="/record" class="active">部署记录</a></li>
+                            <li><a href="/branch">数据分支</a></li>
+                            <li><a href="/settings">基本设置</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="menu-divider"></li>
+                    <li>
+                        <a href="#">
+                            <i class="menu-icon icon-public"></i><span>当前版本</span><span
+                                class="badge badge-danger">1.5</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="search-form">
+                <form action="#" method="GET">
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control search-input"
+                               placeholder="Type something...">
+                        <span class="input-group-btn">
+                                    <button class="btn btn-default" id="close-search" type="button"><i
+                                            class="icon-close"></i></button>
+                                </span>
+                    </div>
+                </form>
+            </div>
+            <nav class="navbar navbar-default navbar-expand-md">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <div class="logo-sm">
+                            <a href="javascript:void(0)" id="sidebar-toggle-button"><i class="fas fa-bars"></i></a>
+                            <a class="logo-box" href="index.html"><span>easy-jenkins</span></a>
+                        </div>
+                        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse"
+                                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <i class="fas fa-angle-down"></i>
+                        </button>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+
+                    <div class="collapse navbar-collapse justify-content-between" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="collapsed-sidebar-toggle-inv"><a href="javascript:void(0)"
+                                                                        id="collapsed-sidebar-toggle-button"><i
+                                    class="fas fa-bars"></i></a></li>
+                            <li><a href="javascript:void(0)" id="toggle-fullscreen"><i class="fas fa-expand"></i></a>
+                            </li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                    <ul class="nav navbar-nav">
+
+                        <li class="dropdown nav-item d-md-block" style="line-height: 60px;">
+                            欢迎你使用easy-jenkins
+                        </li>
+                        <li class="dropdown nav-item d-md-block">
+                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown"
+                               role="button" aria-haspopup="true" aria-expanded="false"><img
+                                    th:src="@{/images/avatars/avatar1.png}" alt="" class="rounded-circle"></a>
+                        </li>
+                    </ul>
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div><!-- /Page Header -->
+        <!-- Page Inner -->
+        <div class="page-inner no-page-title">
+            <div id="main-wrapper">
+                <div class="content-header">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-style-1">
+                            <li class="breadcrumb-item"><a href="#">项目部署</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">部署记录</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <div class="contacts-menu">
+                                            <ul class="list-unstyled">
+                                                <li><a href="#" class="contacts-all active"><i></i>数量<span
+                                                        id="deployCount"></span></a></li>
+                                                <li><a href="#" class="contacts-work"><i></i>vue<span
+                                                        id="vueCount"></span></a></li>
+                                                <li><a href="#" class="contacts-other"><i></i>springboot<span
+                                                        id="springbootCount"></span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="contact-list">
+                                            <div class="contact-list-header">
+                                                <p class="float-left">默认时间降序排序</p>
+                                            </div>
+                                            <div class="table-responsive">
+                                                <table class="table table-hover">
+                                                    <thead>
+                                                    <tr>
+
+                                                        <th scope="col" style="width: 25%;">项目类型</th>
+                                                        <th scope="col" style="width: 25%;">服务器地址</th>
+                                                        <th scope="col" style="width: 25%;">项目名称</th>
+                                                        <th scope="col" style="width: 25%;">部署时间</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody id="recordBody">
+                                                    <tr th:each="deploy,deployStat:${deployRecordList}">
+                                                        <td th:text="${deploy.typeName}"></td>
+                                                        <td th:text="${deploy.host}"></td>
+                                                        <td th:text="${deploy.name}"></td>
+                                                        <td th:text="${deploy.createTime}"></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal fade" id="contact-info" tabindex="-1" role="dialog"
+                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <div class="contact-person">
+                                                            <div class="person-header">
+                                                                <img th:src="@{/images/avatars/avatar3.png}"
+                                                                     alt="Kenny Highland">
+                                                                <h3>Kenny Highland</h3>
+                                                                <span>CEO at Stacks®</span>
+                                                            </div>
+                                                            <div class="person-body">
+                                                                <h4>Short Bio</h4>
+                                                                <p>Donec quis magna eget ipsum accumsan venenatis. Morbi
+                                                                    efficitur tristique nisi, bibendum dapibus neque
+                                                                    malesuada et. Ut facilisis leo ac erat vestibulum
+                                                                    placerat. Donec ac lacus commodo, ultrices elit non,
+                                                                    porttitor turpis.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close
+                                                        </button>
+                                                        <button type="button" class="btn btn-primary">Message</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="page-footer">
+                    <p>2022 &copy; stacks</p>
+                </div>
+            </div><!-- /Page Inner -->
+
+        </div><!-- /Page Content -->
+    </div><!-- /Page Container -->
+</div>
+
+<!-- Javascripts -->
+<script th:src="@{/plugins/jquery/jquery-3.1.0.min.js}"></script>
+<script th:src="@{/plugins/bootstrap/popper.min.js}"></script>
+<script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/plugins/jquery-slimscroll/jquery.slimscroll.min.js}"></script>
+<script th:src="@{/plugins/switchery/switchery.min.js}"></script>
+<script th:src="@{/js/concept.min.js}"></script>
+<script th:src="@{/js/controller/record/index.js}"></script>
+</body>
+</html>

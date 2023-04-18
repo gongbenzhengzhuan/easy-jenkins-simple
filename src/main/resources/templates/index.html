@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive Admin Dashboard Template">
+    <meta name="keywords" content="admin,dashboard">
+    <meta name="author" content="stacks">
+    <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>easy-jenkins</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link href="https://cdn.bootcss.com/font-awesome/5.5.0-2/css/all.min.css" rel="stylesheet">
+    <link th:href="@{/plugins/icomoon/style.css}" rel="stylesheet">
+    <link th:href="@{/plugins/switchery/switchery.min.css}" rel="stylesheet">
+
+    <!-- Theme Styles -->
+    <link th:href="@{/css/concept.min.css}" rel="stylesheet">
+    <link th:href="@{/css/custom.css}" rel="stylesheet">
+
+    <link th:href="@{/css/component.css}" rel="stylesheet">
+
+    <link rel="icon" th:href="@{/images/logo/favicon.ico}" type="image/x-icon"/>
+    <link rel="shortcut icon" th:href="@{/images/logo/favicon.ico}" type="image/x-icon"/>
+
+    <link th:href="@{/css/index/index.css}" rel="stylesheet">
+</head>
+<body>
+
+<!-- Page Container -->
+<div class="page-container">
+    <!-- Page Sidebar -->
+    <div class="page-sidebar">
+        <div id="large-header" class="large-header">
+            <canvas id="demo-canvas"></canvas>
+        </div>
+        <div class="profile-menu">
+            <a href="#">
+                <img th:src="@{/images/avatars/avatar1.png}" alt="">
+            </a>
+        </div>
+        <div class="page-sidebar-inner">
+            <div class="page-sidebar-menu">
+                <ul>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Dashboard"><i
+                                class="fas fa-rocket"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="News"><i
+                                class="fas fa-globe-africa"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Inbox"><i
+                                class="fas fa-inbox"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="Chat"><i
+                                class="far fa-comments"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--        <div class="settings-menu-btn">-->
+        <!--            <a href="#" class="settings-menu-link"><i class="fas fa-wrench"></i></a>-->
+        <!--        </div>-->
+    </div><!-- /Page Sidebar -->
+    <input type="hidden" id="wsUrl" th:value="${wsUrl}">
+    <div class="settings-overlay"></div>
+    <!-- Page Content -->
+    <div class="page-content">
+        <div class="secondary-sidebar">
+            <div class="secondary-sidebar-bar">
+                <a href="#" class="logo-box">easy-jenkins</a>
+            </div>
+            <div class="secondary-sidebar-menu">
+                <ul class="accordion-menu">
+
+
+                    <li class="active-page">
+                        <a href="javascript:void(0)">
+                            <i class="menu-icon icon-apps"></i><span>项目部署</span><i
+                                class="accordion-icon fas fa-angle-left"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="/" class="active">部署列表</a></li>
+                            <li><a href="/record">部署记录</a></li>
+                            <li><a href="/branch">数据分支</a></li>
+                            <li><a href="/settings">基本设置</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="menu-divider"></li>
+                    <li>
+                        <a href="#">
+                            <i class="menu-icon icon-public"></i><span>当前版本</span><span
+                                class="badge badge-danger">1.5</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="search-form">
+                <form action="#" method="GET">
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control search-input"
+                               placeholder="Type something...">
+                        <span class="input-group-btn">
+                                    <button class="btn btn-default" id="close-search" type="button"><i
+                                            class="icon-close"></i></button>
+                                </span>
+                    </div>
+                </form>
+            </div>
+            <nav class="navbar navbar-default navbar-expand-md">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <div class="logo-sm">
+                            <a href="javascript:void(0)" id="sidebar-toggle-button"><i class="fas fa-bars"></i></a>
+                            <a class="logo-box" href="index.html"><span>easy-jenkins</span></a>
+                        </div>
+                        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse"
+                                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <i class="fas fa-angle-down"></i>
+                        </button>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+
+                    <div class="collapse navbar-collapse justify-content-between" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="collapsed-sidebar-toggle-inv"><a href="javascript:void(0)"
+                                                                        id="collapsed-sidebar-toggle-button"><i
+                                    class="fas fa-bars"></i></a></li>
+                            <li><a href="javascript:void(0)" id="toggle-fullscreen"><i class="fas fa-expand"></i></a>
+                            </li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                    <ul class="nav navbar-nav">
+
+                        <li class="dropdown nav-item d-md-block" style="line-height: 60px;">
+                            欢迎你使用easy-jenkins
+                        </li>
+                        <li class="dropdown nav-item d-md-block">
+                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown"
+                               role="button" aria-haspopup="true" aria-expanded="false"><img
+                                    th:src="@{/images/avatars/avatar1.png}" alt="" class="rounded-circle"></a>
+                        </li>
+                    </ul>
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div><!-- /Page Header -->
+        <!-- Page Inner -->
+        <div class="page-inner no-page-title">
+            <div id="main-wrapper">
+                <div class="content-header">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-style-1">
+                            <li class="breadcrumb-item"><a href="#">项目部署</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">部署列表</li>
+                        </ol>
+                    </nav>
+                    <button type="button" onclick="openModal('show')" class="btn btn-primary">添加连接</button>
+                    <button type="button" disabled id="confirmButton" class="btn btn-success">批量部署</button>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xl">
+                        <div class="card">
+                            <div class="card-body">
+                                <div style="display: flex;flex-direction: row">
+                                    <h5 class="card-title">当前分支环境：</h5>
+                                    <h5 class="card-title" id="currentBranch" th:text="${branch}"></h5>
+                                </div>
+
+                                <p>你可以点击<code>数据分支</code>,新建一个分支来管理数据，切换不同分支显示不同<code>分支数据</code>,&nbsp;&nbsp;&nbsp;
+                                    <code>注意：</code>正在部署的时候是不可以进行操作的</p>
+                                <div class="table-body-easy">
+                                    <table class="table table-bordered table-striped table-sm text-nowrap">
+                                        <thead class="thead-dark">
+                                        <tr>
+                                            <th>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="checkAll">
+                                                    <label class="form-check-label" for="checkAll">
+                                                        部署类型
+                                                    </label>
+                                                </div>
+                                            </th>
+                                            <th scope="col">部署ID</th>
+                                            <th scope="col">项目名称</th>
+                                            <th scope="col">创建时间</th>
+                                            <th scope="col">服务协议</th>
+                                            <th scope="col">端口</th>
+                                            <th scope="col">上传地址</th>
+                                            <th scope="col">本地地址</th>
+                                            <th scope="col">操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="thead-dark">
+                                        <tr th:each="deploy,deployStat:${deployConnectList}"
+                                            th:class="${'index-tr-'+deployStat.index}">
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" >
+                                                    <label class="form-check-label" th:class="${'row-jenkins-'+(deployStat.index+1)}" th:connect_id="${deploy.connectId}" th:text="${deploy.typeName}" >
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td th:text="${deploy.connectId}"></td>
+                                            <td th:text="${deploy.name}"></td>
+                                            <td th:text="${deploy.createTime}"></td>
+                                            <td th:text="${deploy.host}"></td>
+                                            <td th:text="${deploy.port}"></td>
+                                            <td th:text="${deploy.serverPath}"></td>
+                                            <td th:text="${deploy.localPath}"></td>
+                                            <td>
+                                                <button type="button"
+                                                        th:class="${'cz_'+deploy.connectId+' btn btn-success'}"
+                                                        th:onclick="tableOnclick([[${deploy.connectId}]],1,this,[[${deploy.host}]])"
+                                                        th:disabled="${deploy.deployState}" class="btn btn-success">部署
+                                                </button>
+                                                <button type="button"
+                                                        th:class="${'cz_'+deploy.connectId+' btn btn-light'}"
+                                                        th:onclick="tableOnclick([[${deploy.connectId}]],2,this)"
+                                                        th:disabled="${deploy.deployState}" class="btn btn-light">编辑
+                                                </button>
+                                                <button type="button"
+                                                        th:class="${'cz_'+deploy.connectId+' btn btn-danger'}"
+                                                        th:onclick="tableOnclick([[${deploy.connectId}]],3,this)"
+                                                        th:disabled="${deploy.deployState}" class="btn btn-danger">删除
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="table-bot">滑动
+                                        <svg t="1678983254398" class="icon" viewBox="0 0 1238 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="2932" width="200" height="200">
+                                            <path d="M655.12186 243.926326v47.627907H119.069767v-47.627907zM106.877023 356.566326L23.075721 272.788837a7.144186 7.144186 0 0 1 0-10.097116l83.801302-83.801302A7.144186 7.144186 0 0 1 119.069767 183.938977v167.57879a7.144186 7.144186 0 0 1-12.192744 5.048559z"
+                                                  fill="#8014f1" p-id="2933"></path>
+                                            <path d="M95.255814 119.069767V71.44186h500.093023v47.627907z"
+                                                  fill="#8014f1" p-id="2934"></path>
+                                            <path d="M607.541581 6.429767l83.801303 83.777489a7.144186 7.144186 0 0 1 0 10.097116l-83.801303 83.801302A7.144186 7.144186 0 0 1 595.348837 179.033302V11.478326a7.144186 7.144186 0 0 1 12.192744-5.072373z"
+                                                  fill="#8014f1" p-id="2935"></path>
+                                            <path d="M879.758884 214.087442V129.92893a71.44186 71.44186 0 0 1 71.44186-71.44186h9.216a71.44186 71.44186 0 0 1 71.441861 71.44186v296.197954c18.67014-7.072744 54.676837-40.531349 98.542139 33.815814 7.334698-2.333767 14.955163-3.595907 22.575628-3.595907 46.341953 0 83.991814 43.817674 83.991814 97.637209V813.722791c0 57.46307-25.433302 120.998698-64.726326 161.887256-21.908837 22.789953-45.508465 35.411349-66.631441 35.411348H848.991256c-48.104186 0-69.703442-35.673302-87.15907-64.345302l-0.476279-0.809674c-0.642977-1.119256-1.762233-2.524279-2.762419-3.810233l-0.333395-0.547721c-0.476279-0.714419-1.071628-1.476465-1.452651-2.16707l-2.452837-3.572093-0.285768-0.333395-120.165209-184.939163a99.399442 99.399442 0 0 1-14.288372-73.370791 97.018047 97.018047 0 0 1 39.959814-62.321116 92.207628 92.207628 0 0 1 93.350697-6.786977V298.936558c-0.190512-53.748093 40.340837-97.589581 90.088186-97.589581 16.193488 0 28.076651 4.643721 36.744931 12.764279z m277.242046 707.131535c20.337116-31.077209 32.005953-68.274605 32.005954-101.923721v-267.192558c0-21.861209-13.478698-40.817116-28.814884-40.817117a20.48 20.48 0 0 0-9.716093 2.500466V607.255814c-1.190698 15.669581-13.764465 27.814698-28.933954 27.909953-15.217116 0-27.88614-12.383256-28.910139-27.909953l-0.047628-81.062698-1.714605-22.766139c-1.524093-20.265674-14.502698-36.840186-29.005395-36.840186-6.405953 0-13.026233 3.572093-18.217674 9.525581v101.066419c-0.071442 16.526884-13.026233 29.910326-29.005396 29.934139-15.955349-0.071442-23.266233-13.43107-23.337674-29.934139V122.284651c-5.048558-17.28893-24.552186-24.147349-36.792558-24.147349-8.334884 0-27.457488 10.716279-27.457489 24.147349V601.016558c0 14.645581-6.167814 26.647814-20.313302 26.647814h-6.26307c-14.193116 0-25.766698-12.002233-25.766697-26.647814V300.103442l-0.142884-10.597209c0-22.528-15.812465-40.745674-35.363721-40.745675-19.527442 0-35.363721 18.265302-35.363721 40.721861l1.26214 292.435348c0.095256 0.881116 0.11907 1.80986 0.095255 2.714791v115.997768c-0.214326 14.931349-11.002047 27.433674-25.338046 29.33879a29.053023 29.053023 0 0 1-31.672558-21.765953l-10.859163-32.791814a39.364465 39.364465 0 0 0-25.123721-17.384186 38.340465 38.340465 0 0 0-29.648372 6.144c-18.074791 12.573767-22.861395 37.911814-10.763907 56.629581l123.880186 190.34493 0.404837 0.523907 1.500279 2.357582 1.905117 2.905302c1.190698 1.905116 2.452837 3.714977 3.572093 5.12l0.78586 1.047814 0.619163 1.309768c19.289302 31.86307 26.719256 38.769116 41.364837 38.769116h265.049302c7.787163-0.166698 27.124093-13.169116 46.127628-41.960186z"
+                                                  fill="#8014f1" p-id="2936"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- Main Wrapper -->
+
+
+            <div class="page-footer">
+                <p>2022 &copy; stacks</p>
+            </div>
+        </div><!-- /Page Inner -->
+
+    </div><!-- /Page Content -->
+</div><!-- /Page Container -->
+
+
+<!--修改模态框-->
+<div class="modal fade bd-example-modal-xl" id="updateConnect" tabindex="-1" role="dialog"
+     aria-labelledby="updateCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateCenterTitle">修改连接</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="text" id="connectIdUpdate" style="display: none;"/>
+                    <input type="text" id="createTimeUpdate" style="display: none;"/>
+                    <input type="text" id="mavenPathUpdate" style="display: none;"/>
+                    <div class="row">
+                        <div class="col">
+                            <label for="localPath">本地项目地址</label>
+                            <input type="text" class="form-control" id="localPathUpdate" placeholder="本地项目地址">
+                        </div>
+                        <div class="col">
+                            <label for="host">服务器地址</label>
+                            <input type="text" class="form-control" id="hostUpdate" placeholder="服务器地址 186.xx.xx.x1">
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col">
+                            <label for="typeName">项目类型</label>
+                            <select disabled class="form-control custom-select" id="typeNameUpdate">
+                                <option value="springboot">springboot</option>
+                                <option value="vue">vue</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="username">服务器账号</label>
+                            <input type="text" class="form-control" id="usernameUpdate" placeholder="服务器账号">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="name">项目名称</label>
+                            <input type="text" class="form-control" id="nameUpdate" aria-describedby="emailHelp"
+                                   placeholder="项目名称">
+                        </div>
+
+                        <div class="col">
+                            <label for="password">服务器密码</label>
+                            <input type="password" class="form-control" id="passwordUpdate" placeholder="服务器密码">
+                        </div>
+
+                    </div>
+
+                    <div class="row" id="jarNameUpdate-col-all">
+                        <div class="col" >
+                            <label for="jarName">需要上传的jar名称</label>
+                            <input type="text" class="form-control" id="jarNameUpdate" placeholder="需要上传的jar名称">
+                        </div>
+                        <div class="col">
+                            <label for="port">服务器端口</label>
+                            <input type="text" class="form-control" value="22" id="portUpdate" placeholder="服务器端口号">
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col" id="vueRootLocalPathUpdate-col">
+                            <label for="vueRootLocalPath">vue路径的根目录</label>
+                            <input type="text" class="form-control" id="vueRootLocalPathUpdate"
+                                   placeholder="vue路径的根目录 springboot类型不需要填写">
+                        </div>
+
+                        <div class="col">
+                            <label for="serverPath">上传的位置</label>
+                            <input type="text" class="form-control" id="serverPathUpdate"
+                                   placeholder="上传的位置 如 /home/springboot  最后面不需要 '/'">
+                        </div>
+                    </div>
+
+                    <div class="row" id="projectPortUpdate-col-all">
+                        <div class="col">
+                            <label for="projectPort">部署项目的端口号</label>
+                            <input type="text" class="form-control" value="8080" id="projectPortUpdate"
+                                   placeholder="部署项目的端口号 部署项目的端口号如80 8080 等">
+                        </div>
+                        <div class="col">
+                            <label for="projectPort">执行的命令</label>
+                            <input type="text" class="form-control" id="execUpdate"
+                                   placeholder="执行的命令 默认为 nohup java -jar /xx/xxx/test.jar &">
+                        </div>
+                    </div>
+
+                    <div class="row" id="pomXmlPathUpdate-col">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="projectPort">项目pom.xml路径地址</label>
+                                <input type="text" class="form-control" id="pomXmlPathUpdate"
+                                       placeholder="项目pom.xml路径地址">
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="reset" name="reset" style="display: none;"/>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" onclick="okConnect(1)" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--添加模态框-->
+<div class="modal fade bd-example-modal-xl" id="addConnect" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">添加连接</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="text" id="connectId" style="display: none;"/>
+                    <input type="text" id="createTime" style="display: none;"/>
+                    <input type="text" id="mavenPath" style="display: none;"/>
+                    <div class="row">
+                        <div class="col">
+                            <label for="localPath">本地项目地址</label>
+                            <input type="text" class="form-control" id="localPath" placeholder="本地项目地址">
+                        </div>
+                        <div class="col">
+                            <label for="host">服务器地址</label>
+                            <input type="text" class="form-control" id="host" placeholder="服务器地址 186.xx.xx.x1">
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col">
+                            <label for="typeName">项目类型</label>
+                            <select class="form-control custom-select" id="typeName">
+                                <option value="springboot">springboot</option>
+                                <option value="vue">vue</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="username">服务器账号</label>
+                            <input type="text" class="form-control" value="root" id="username" placeholder="服务器账号">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="name">项目名称</label>
+                            <input type="text" class="form-control" id="name" aria-describedby="emailHelp"
+                                   placeholder="项目名称">
+                        </div>
+
+                        <div class="col">
+                            <label for="password">服务器密码</label>
+                            <input type="password" class="form-control" id="password" placeholder="服务器密码">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="jarName">需要上传的jar名称</label>
+                            <input type="text" class="form-control" id="jarName" placeholder="需要上传的jar名称">
+                        </div>
+                        <div class="col">
+                            <label for="port">服务器端口</label>
+                            <input type="text" class="form-control" value="22" id="port" placeholder="服务器端口号">
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col">
+                            <label for="vueRootLocalPath">vue路径的根目录</label>
+                            <input type="text" class="form-control" id="vueRootLocalPath"
+                                   placeholder="vue路径的根目录 springboot类型不需要填写">
+                        </div>
+
+                        <div class="col">
+                            <label for="serverPath">上传的位置</label>
+                            <input type="text" class="form-control" id="serverPath"
+                                   placeholder="上传的位置 如 /home/springboot  最后面不需要 '/'">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="projectPort">部署项目的端口号</label>
+                            <input type="text" class="form-control" value="8080" id="projectPort"
+                                   placeholder="部署项目的端口号 部署项目的端口号如80 8080 等">
+                        </div>
+                        <div class="col">
+                            <label for="exec">执行的命令</label>
+                            <input type="text" class="form-control" id="exec"
+                                   placeholder="执行的命令 默认为 nohup java -jar /xx/xxx/test.jar &">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="projectPort">项目pom.xml路径地址</label>
+                                <input type="text" class="form-control" id="pomXmlPath" placeholder="项目pom.xml路径地址">
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="reset" name="reset" style="display: none;"/>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" onclick="okConnect(0)" class="btn btn-primary">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Javascripts -->
+<script th:src="@{/plugins/jquery/jquery-3.1.0.min.js}"></script>
+<script th:src="@{/plugins/bootstrap/popper.min.js}"></script>
+<script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/plugins/jquery-slimscroll/jquery.slimscroll.min.js}"></script>
+<script th:src="@{/plugins/switchery/switchery.min.js}"></script>
+<script th:src="@{/js/concept.min.js}"></script>
+<script th:src="@{/js/util/alterUtil.js}"></script>
+<script th:src="@{/plugins/socket/websocket.js}"></script>
+<script th:src="@{/plugins/win/winbox.bundle.js}"></script>
+<script th:src="@{/js/controller/main/index.js}"></script>
+<script th:src="@{/js/left.js}"></script>
+</body>
+</html>
