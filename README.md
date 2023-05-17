@@ -1,4 +1,4 @@
-放弃
+放弃，可以参考前后端不分离的项目，要做一个项目
 
 <p align=center>
     <img src="./logo.png" width="380" height="140" alt="logo" title="logo" />
