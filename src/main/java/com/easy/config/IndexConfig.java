@@ -37,7 +37,7 @@ public class IndexConfig implements WebMvcConfigurer {
                 .allowCredentials(true) // 是否发送 Cookie
               //  .allowedOriginPatterns("*") // 支持域
                 .allowedMethods("GET", "POST", "PUT", "DELETE") // 支持方法
-                .allowedHeaders("*")
-                .exposedHeaders("*");
+                .allowedHeaders("*");
+                //.exposedHeaders("*");
     }
 }

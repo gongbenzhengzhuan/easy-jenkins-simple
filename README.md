@@ -1,3 +1,5 @@
+放弃
+
 <p align=center>
     <img src="./logo.png" width="380" height="140" alt="logo" title="logo" />
 </p>
@@ -40,3 +42,7 @@ thymeleaf 3.0.15<br/>
 ![输入图片说明](branch.png)
 ##### 基本设置
 ![输入图片说明](settings2.png)
+
+使用感受：使用效果差，docker部署，直接上传jar等工程没有，放弃。
+1）java打包，本程序打，无法运行。
+2）vue，没有上传。
